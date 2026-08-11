@@ -29,7 +29,7 @@ jobs:
           context: ./frontend
           file: ./frontend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/support-frontend:${{ github.run_id }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ticket-frontend:${{ github.run_id }}
       
       - name: Build and push backend
         uses: docker/build-push-action@v5
@@ -37,7 +37,7 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/support-backend:${{ github.run_id }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ticket-backend:${{ github.run_id }}
   
   update-newtag-in-helm-chart:
     runs-on: ubuntu-latest
