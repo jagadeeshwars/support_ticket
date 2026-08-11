@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+spec:
+  template:
+    metadata:
+      name: ticket-postgres
+      labels:
+        app: ticket-postgres
+    spec:
+      containers:
+        - name: ticket-postgres
+          image: postgres:16-alpine
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              value: Admin@123
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticket-postgres
