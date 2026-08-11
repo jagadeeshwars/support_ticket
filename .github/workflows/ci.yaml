@@ -2,15 +2,15 @@ on:
   push:
     branches:
       - main
-  path-ignore:
-    - 'K8s/**'
-    - 'helm/**'
+    paths-ignore:
+      - 'K8s/**'
+      - 'helm/**'
 
 jobs:
   docker:
     name: Build Docker images
     runs-on: ubuntu-latest
-    Steps:
+    steps:
       - name: Checkout Code
         uses: actions/checkout@v4
       
