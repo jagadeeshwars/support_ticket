@@ -19,7 +19,7 @@ spec:
               value: Admin@123
             - name: DB_NAME
               value: postgres
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: ticket-backend

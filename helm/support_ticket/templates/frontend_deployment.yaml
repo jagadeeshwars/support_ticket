@@ -14,7 +14,7 @@ spec:
           image: jaga80155/ticket-frontend:{{ .Values.image.tag}}
           ports:
             - containerPort: 80
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: ticket-frontend
