@@ -17,6 +17,14 @@ spec:
           env:
             - name: POSTGRES_PASSWORD
               value: Admin@123
+          volumeMounts:
+            - name: init-script
+              mountPath: /docker-entrypoint-initdb.d/init.sql
+              subPath: init.sql
+      volumes:
+        - name: init-script
+          configMap:
+            name: db-init-script
   replicas: 1
   selector:
     matchLabels:
