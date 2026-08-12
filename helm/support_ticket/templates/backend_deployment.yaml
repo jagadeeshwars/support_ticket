@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: ticket-backend
-          image: jaga80155/ticket_backend:{{ .Values.image.tag }}
+          image: jaga80155/ticket-backend:{{ .Values.image.tag }}
           ports:
             - containerPort: 5000
   replicas: 2
