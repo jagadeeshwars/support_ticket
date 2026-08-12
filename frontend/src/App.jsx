@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Ticket, CheckCircle, Clock, AlertCircle } from 'lucide-react';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 function App() {
   const [tickets, setTickets] = useState([]);
