@@ -12,7 +12,7 @@ app.use(express.json());
 // PostgreSQL setup
 const pool = new Pool({
   user: process.env.DB_USER || 'postgres',
-  host: process.env.DB_HOST || 'ticket-postgres',
+  host: process.env.DB_HOST || 'db-service',
   database: process.env.DB_NAME || 'support_db',
   password: process.env.DB_PASSWORD || 'password',
   port: process.env.DB_PORT || 5432,
@@ -20,7 +20,7 @@ const pool = new Pool({
 
 // Redis setup
 const redisClient = redis.createClient({
-  url: process.env.REDIS_URL || 'redis://ticket-redis:6379'
+  url: process.env.REDIS_URL || 'redis://redis-service:6379'
 });
 
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
