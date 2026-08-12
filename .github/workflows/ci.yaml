@@ -4,7 +4,6 @@ on:
       - main
     paths-ignore:
       - 'K8s/**'
-      - 'helm/**'
 
 jobs:
   docker:
