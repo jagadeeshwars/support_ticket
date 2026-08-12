@@ -12,7 +12,7 @@ app.use(express.json());
 // PostgreSQL setup
 const pool = new Pool({
   user: process.env.DB_USER || 'postgres',
-  host: process.env.DB_HOST || 'localhost',
+  host: process.env.DB_HOST || 'ticket-postgres',
   database: process.env.DB_NAME || 'support_db',
   password: process.env.DB_PASSWORD || 'password',
   port: process.env.DB_PORT || 5432,
@@ -20,7 +20,7 @@ const pool = new Pool({
 
 // Redis setup
 const redisClient = redis.createClient({
-  url: process.env.REDIS_URL || 'redis://localhost:6379'
+  url: process.env.REDIS_URL || 'redis://ticket-redis:6379'
 });
 
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
@@ -49,7 +49,7 @@ app.get('/api/tickets', async (req, res) => {
 
     const result = await pool.query('SELECT * FROM tickets ORDER BY created_at DESC');
     const tickets = result.rows;
-    
+
     // Cache for 60 seconds
     await redisClient.setEx('active_tickets', 60, JSON.stringify(tickets));
     console.log('Serving from Database');
